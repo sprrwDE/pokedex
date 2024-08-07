@@ -27,6 +27,7 @@ header {
 main {
     flex: 1;
     width: 100%;
+    background-color: #253237;
 }
 
 footer {
@@ -34,10 +35,13 @@ footer {
     background-color: lightskyblue;
 }
 
-.container {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 1440px;
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
 }
 
 /* Link Styling */
