@@ -44,6 +44,13 @@ footer {
     margin: 40px 0;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
 /* Link Styling */
 
 a {
