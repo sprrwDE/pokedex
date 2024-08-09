@@ -1,41 +1,35 @@
 function init() {
-    fetchPokemon("");
+    fetchPokemon();
 };
 
-const testUrl = "https://pokeapi.co/api/v2/pokemon/";
+let limit = 1;
+let pokemon = [];
 
-async function fetchPokemon(path = "") {
-    let response = await fetch(testUrl + path);
-    let responseToJson = await response.json();
-    renderNames(responseToJson);
+async function fetchPokemon() {
+    try {
+        for (let i = limit; i < limit + 20; i++) {
+            let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+            let response = await fetch(url);
+            let responseToJson = await response.json();
+            pokemon.push(responseToJson)
+        }
+        console.log(pokemon);
+    } catch (error) {
+        console.log('Error Brudi');
+    }
 }
 
-function renderNames(response) {
+/* unction getPokomonNames(response) {
     const results = response.results;
+    console.log(results);
     for (let indexResults = 0; indexResults < results.length; indexResults++) {
         let content = document.getElementById('content');
         let name = results[indexResults].name;
         content.innerHTML += testTemplateBootstrap(name);
+        console.log(name);
     }
 }
-
-// Loadingscreen onload body
-
-// Es soll eine bestimmte Anzahl an Pokemon Karten direkt gerendert werden. Am besten zwischen 20 und 40.
-
-/* Unten gibt es einen Button, um weitere 20-40 Pokemon zu laden. (Info: insgesamt gibt es über 1000 Pokemon)
-    Es erscheint ein Loadingscreen (Userfeedback).
-    Der Button kann während des Ladens nicht erneut angeklickt werden. 
 */
-
-/**
-Sichtbar soll auf jeder kleinen Pokemon Karte sein:
-    Name
-    Typ/en
-    Bild des Pokemons
-    Hintergrundfarbe passend zum Typ
-    ID (optional)
- */
 
 function testTemplateBootstrap(name) {
     return `<div class="card" style="width: 18rem;">
