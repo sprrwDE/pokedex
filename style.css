@@ -22,6 +22,9 @@ body {
 header {
     height: 100px;
     background-color: lightskyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
@@ -33,6 +36,35 @@ main {
 footer {
     height: 100px;
     background-color: lightskyblue;
+}
+
+.d-none {
+    display: none;
+}
+
+
+/* Link Styling */
+
+a {
+    text-decoration: none;
+}
+
+/* Fonts */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "poke";
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+@font-face {
+    font-family: "poke";
+    src: url("/assets/pocket-monk-font/poke.ttf");
 }
 
 .content-wrapper {
@@ -56,37 +88,32 @@ footer {
     cursor: pointer;
 }
 
-/* Link Styling */
-
-a {
-    text-decoration: none;
-}
-
-/* Headlines */
-
-h1, h2, h3, h4, h5, h6 {
-    margin-block-start: 0;
-    margin-block-end: 0;
-}
-
-.d-none{
-    display: none; 
-}
-
 .test {
-    width: 500px;
-    height: 500px;
-    background-color: black;
+    width: 600px;
+    height: 600px;
+    background-color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .overlay-test {
-    background-color: grey;
-    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
     width: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 999;
+}
+
+.big {
+    width: 300px;
+}
+
+.x {
+    cursor: pointer;
 }

@@ -39,7 +39,7 @@ function renderPokemonCard() {
 }
 
 function cardTemplate(p, name, img) {
-    return `<div class="card small" style="width: 18rem;" id="card${p}" onclick="openDialog()">
+    return `<div class="card small" style="width: 18rem;" id="card${p}" onclick="openDialog(${p})">
     <img src="${img}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">${name}</h5>
@@ -51,10 +51,13 @@ function cardTemplate(p, name, img) {
 
 //${p}, ${name}, ${img}
 
-function openDialog() {
+function openDialog(p) {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    overlay.innerHTML = bigCardTemplate();
+    let name = pokemon[p].name;
+    let img = pokemon[p].sprites.front_default;
+    let j = p;
+    overlay.innerHTML = bigCardTemplate(j, name, img);
 }
 
 function closeOverlay() {
@@ -62,6 +65,25 @@ function closeOverlay() {
     overlay.classList.add('d-none');
 }
 
-function bigCardTemplate() {
-    return `<div class="test" onclick="closeOverlay()"></div>`
+function bigCardTemplate(j, name, img) {
+    return `
+    <div class="test">
+    <img class="big" src="${img}" class="card-img-top" alt="...">
+    <h3>${name}</h3>
+    <div class="button-wrapper">
+    <button onclick="nextPokemon(${j})">next</button>
+    <button onclick="prevPokemon(${j})">prev</button>
+    <button class="x" onclick="closeOverlay()">close</button>
+    </div>
+    </div>`
+}
+
+function nextPokemon(j) {
+    j++;
+    openDialog(j);
+}
+
+function prevPokemon(j) {
+    j--;
+    openDialog(j);
 }
