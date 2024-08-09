@@ -13,25 +13,23 @@ async function fetchPokemon() {
             let responseToJson = await response.json();
             pokemon.push(responseToJson)
         }
+        renderPokemonCard();
         console.log(pokemon);
     } catch (error) {
         console.log('Error Brudi');
     }
 }
 
-/* unction getPokomonNames(response) {
-    const results = response.results;
-    console.log(results);
-    for (let indexResults = 0; indexResults < results.length; indexResults++) {
+function renderPokemonCard() {
+    for (let indexArray = 0; indexArray < pokemon.length; indexArray++) {
         let content = document.getElementById('content');
-        let name = results[indexResults].name;
-        content.innerHTML += testTemplateBootstrap(name);
+        let name = pokemon[indexArray].name;
+        content.innerHTML += cardTemplate(name);
         console.log(name);
     }
 }
-*/
 
-function testTemplateBootstrap(name) {
+function cardTemplate(name) {
     return `<div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
