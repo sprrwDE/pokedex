@@ -1,5 +1,5 @@
 function cardTemplate(p, name, img, type) {
-    return `<div class="card small ${type}" style="width: 18rem;" id="card${p}" onclick="openDialog(${p})">
+    return `<div class="card small ${type[0]}" style="width: 18rem;" id="card${p}" onclick="openDialog(${p})">
     <img src="${img}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">${name}</h5>
@@ -11,7 +11,7 @@ function cardTemplate(p, name, img, type) {
 
 function bigCardTemplate(j, name, img, type) {
     return `
-    <div class="test ${type}">
+    <div class="test ${type[0]}">
     <img class="big" src="${img}" class="card-img-top" alt="...">
     <h3>${name}</h3>
     <div class="button-wrapper">    

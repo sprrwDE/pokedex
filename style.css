@@ -125,6 +125,22 @@ h6 {
     background-color: green !important;
 }
 
+.fire {
+    background-color: orange !important;
+}
+
+.water {
+    background-color: lightblue !important;
+}
+
+.bug {
+    background-color: violet !important;
+}
+
+.normal {
+    background-color: sandybrown !important;
+}
+
 .card {
     cursor: pointer;
 }

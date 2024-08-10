@@ -49,17 +49,17 @@ function renderPokemonCard() {
         let img = pokemon[p].sprites.front_default;        
         let type = getTypes(p);
         console.log(type[0]);
-        content.innerHTML += cardTemplate(p, name, img, type[0]);
+        content.innerHTML += cardTemplate(p, name, img, type); // in Objekt pushen und global speichern dass man nur eine variable übergeben muss? 
     }
 }
 
 function getTypes(p) {
     let allTypes = pokemon[p].types
+    let types = [];
     for (let t = 0; t < pokemon[p].types.length; t++) {
-        let types = [];
         types.push(allTypes[t].type.name);
-        return types;
     }
+    return types;
 }
 
 /**
@@ -82,8 +82,6 @@ function closeOverlay() {
 }
 
 // Event Bubbling einfügen
-
-
 
 function nextPokemon(j) {
     j = (j + 1 + pokemon.length) % pokemon.length;
