@@ -26,7 +26,7 @@ let pokemon = [];
 
 async function fetchPokemon() {
     try {
-        for (let i = limit; i < limit + 60; i++) {
+        for (let i = limit; i < limit + 20; i++) {
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             let response = await fetch(url);
             let responseToJson = await response.json();
@@ -46,8 +46,19 @@ function renderPokemonCard() {
     for (let p = 0; p < pokemon.length; p++) {
         let content = document.getElementById('content');
         let name = pokemon[p].name;
-        let img = pokemon[p].sprites.front_default;
-        content.innerHTML += cardTemplate(p, name, img);
+        let img = pokemon[p].sprites.front_default;        
+        let type = getTypes(p);
+        console.log(type[0]);
+        content.innerHTML += cardTemplate(p, name, img, type[0]);
+    }
+}
+
+function getTypes(p) {
+    let allTypes = pokemon[p].types
+    for (let t = 0; t < pokemon[p].types.length; t++) {
+        let types = [];
+        types.push(allTypes[t].type.name);
+        return types;
     }
 }
 
@@ -60,8 +71,9 @@ function openDialog(p) {
     overlay.classList.remove('d-none');
     let name = pokemon[p].name;
     let img = pokemon[p].sprites.other.showdown.front_default;
+    let type = getTypes(p);
     let j = p;
-    overlay.innerHTML = bigCardTemplate(j, name, img);
+    overlay.innerHTML = bigCardTemplate(j, name, img, type);
 }
 
 function closeOverlay() {

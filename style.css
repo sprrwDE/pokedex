@@ -120,3 +120,11 @@ h6 {
 .x {
     cursor: pointer;
 }
+
+.grass {
+    background-color: green !important;
+}
+
+.card {
+    cursor: pointer;
+}
