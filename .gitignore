@@ -1,5 +1,6 @@
 /assets
 /node_modules
+/db
 package-lock.json
 package.json
 todo.txt

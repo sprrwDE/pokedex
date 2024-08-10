@@ -1,22 +1,32 @@
 function init() {
-    fetchTest("");
+    startLoadingAnimation();
     fetchPokemon();
 };
 
-let testUrl = "https://pokeapi.co/api/v2/pokemon/";
+/**
+ * Loading Animations
+ */
 
-async function fetchTest(path = "") {
-    let r = await fetch(testUrl + path);
-    let rJson = await r.json()
-    console.log(rJson);
+function startLoadingAnimation() {
+    let overlay = document.getElementById('overlay-loading');
+    overlay.classList.remove('d-none');
 }
+
+function endLoadingAnmiation() {
+    let overlay = document.getElementById('overlay-loading');
+    overlay.classList.add('d-none');
+}
+
+/**
+ * Fetch Pokemon and Render Content
+ */
 
 let limit = 1;
 let pokemon = [];
 
 async function fetchPokemon() {
     try {
-        for (let i = limit; i < limit + 20; i++) {
+        for (let i = limit; i < limit + 60; i++) {
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             let response = await fetch(url);
             let responseToJson = await response.json();
@@ -26,6 +36,9 @@ async function fetchPokemon() {
         console.log(pokemon);
     } catch (error) {
         console.log('Error Brudi');
+    } finally {
+        endLoadingAnmiation();
+        console.log('Pokemon successfully fetched')
     }
 }
 
@@ -38,24 +51,15 @@ function renderPokemonCard() {
     }
 }
 
-function cardTemplate(p, name, img) {
-    return `<div class="card small" style="width: 18rem;" id="card${p}" onclick="openDialog(${p})">
-    <img src="${img}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">${name}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-            card's content.</p>
-    </div>
-</div>`
-}
-
-//${p}, ${name}, ${img}
+/**
+ * Open Big Pokemon Cards and Overlay
+ */
 
 function openDialog(p) {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
     let name = pokemon[p].name;
-    let img = pokemon[p].sprites.front_default;
+    let img = pokemon[p].sprites.other.showdown.front_default;
     let j = p;
     overlay.innerHTML = bigCardTemplate(j, name, img);
 }
@@ -65,25 +69,21 @@ function closeOverlay() {
     overlay.classList.add('d-none');
 }
 
-function bigCardTemplate(j, name, img) {
-    return `
-    <div class="test">
-    <img class="big" src="${img}" class="card-img-top" alt="...">
-    <h3>${name}</h3>
-    <div class="button-wrapper">
-    <button onclick="nextPokemon(${j})">next</button>
-    <button onclick="prevPokemon(${j})">prev</button>
-    <button class="x" onclick="closeOverlay()">close</button>
-    </div>
-    </div>`
-}
+// Event Bubbling einfügen
+
+
 
 function nextPokemon(j) {
-    j++;
+    j = (j + 1 + pokemon.length) % pokemon.length;
     openDialog(j);
 }
 
 function prevPokemon(j) {
-    j--;
+    j = (j - 1 + pokemon.length) % pokemon.length;
     openDialog(j);
+}
+
+function loadPokemon() {
+    limit + 20;
+    fetchPokemon()
 }
