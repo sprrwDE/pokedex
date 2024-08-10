@@ -21,8 +21,9 @@ function endLoadingAnmiation() {
  * Fetch Pokemon and Render Content
  */
 
+let test = [];
 let limit = 1;
-let pokemon = [];
+let pokemonData = [];
 
 async function fetchPokemon() {
     try {
@@ -30,36 +31,32 @@ async function fetchPokemon() {
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             let response = await fetch(url);
             let responseToJson = await response.json();
-            pokemon.push(responseToJson)
+            test.push(responseToJson)
+            console.log(test)
+            let pokemonDetail = {
+                name: responseToJson.name,
+                img: responseToJson.sprites.other['official-artwork'].front_default,
+                types: responseToJson.types.map(typeInfo => typeInfo.type.name), // typesInfo entspricht types[i], map iteriert durch die schleife
+                bigImg: responseToJson.sprites.other['official-artwork'].front_default 
+            };
+            pokemonData.push(pokemonDetail);
         }
         renderPokemonCard();
-        console.log(pokemon);
     } catch (error) {
         console.log('Error Brudi');
     } finally {
         endLoadingAnmiation();
-        console.log('Pokemon successfully fetched')
+        console.log('Pokemon successfully fetched');
     }
 }
 
 function renderPokemonCard() {
-    for (let p = 0; p < pokemon.length; p++) {
-        let content = document.getElementById('content');
-        let name = pokemon[p].name;
-        let img = pokemon[p].sprites.front_default;        
-        let type = getTypes(p);
-        console.log(type[0]);
-        content.innerHTML += cardTemplate(p, name, img, type); // in Objekt pushen und global speichern dass man nur eine variable übergeben muss? 
+    let content = document.getElementById('content');
+    content.innerHTML = ''; 
+    for (let p = 0; p < pokemonData.length; p++) {
+        let pokemon = pokemonData[p]; 
+        content.innerHTML += cardTemplate(pokemon, p); 
     }
-}
-
-function getTypes(p) {
-    let allTypes = pokemon[p].types
-    let types = [];
-    for (let t = 0; t < pokemon[p].types.length; t++) {
-        types.push(allTypes[t].type.name);
-    }
-    return types;
 }
 
 /**
@@ -69,11 +66,8 @@ function getTypes(p) {
 function openDialog(p) {
     let overlay = document.getElementById('overlay');
     overlay.classList.remove('d-none');
-    let name = pokemon[p].name;
-    let img = pokemon[p].sprites.other.showdown.front_default;
-    let type = getTypes(p);
-    let j = p;
-    overlay.innerHTML = bigCardTemplate(j, name, img, type);
+    let pokemon = pokemonData[p]; 
+    overlay.innerHTML = bigCardTemplate(pokemon, p);
 }
 
 function closeOverlay() {
@@ -84,16 +78,16 @@ function closeOverlay() {
 // Event Bubbling einfügen
 
 function nextPokemon(j) {
-    j = (j + 1 + pokemon.length) % pokemon.length;
+    j = (j + 1 + pokemonData.length) % pokemonData.length; 
     openDialog(j);
 }
 
 function prevPokemon(j) {
-    j = (j - 1 + pokemon.length) % pokemon.length;
+    j = (j - 1 + pokemonData.length) % pokemonData.length; 
     openDialog(j);
 }
 
 function loadPokemon() {
-    limit + 20;
+    limit += 20;
     fetchPokemon()
 }

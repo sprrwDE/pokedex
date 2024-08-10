@@ -69,18 +69,11 @@ h6 {
 
 .content-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 40px 0;
     z-index: 1;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     gap: 32px;
 }
 
@@ -88,7 +81,11 @@ h6 {
     cursor: pointer;
 }
 
-.test {
+.big {
+    height: 300px;
+}
+
+.dialog {
     width: 600px;
     height: 600px;
     background-color: white;
@@ -113,34 +110,3 @@ h6 {
     justify-content: center;
 }
 
-.big {
-    height: 300px;
-}
-
-.x {
-    cursor: pointer;
-}
-
-.grass {
-    background-color: green !important;
-}
-
-.fire {
-    background-color: orange !important;
-}
-
-.water {
-    background-color: lightblue !important;
-}
-
-.bug {
-    background-color: violet !important;
-}
-
-.normal {
-    background-color: sandybrown !important;
-}
-
-.card {
-    cursor: pointer;
-}
