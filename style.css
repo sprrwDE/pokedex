@@ -21,7 +21,7 @@ body {
 
 header {
     height: 100px;
-    background-color: lightskyblue;
+    background-color: #FF0000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,10 @@ main {
 
 footer {
     height: 100px;
-    background-color: lightskyblue;
+    background-color: #FF0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .d-none {
@@ -79,6 +82,7 @@ h6 {
 
 .small {
     cursor: pointer;
+    padding: 24px !important;
 }
 
 .big {
@@ -109,4 +113,3 @@ h6 {
     align-items: center;
     justify-content: center;
 }
-

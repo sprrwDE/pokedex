@@ -1,5 +1,4 @@
 function init() {
-    startLoadingAnimation();
     fetchPokemon();
 };
 
@@ -21,26 +20,27 @@ function endLoadingAnmiation() {
  * Fetch Pokemon and Render Content
  */
 
-let test = [];
 let limit = 1;
 let pokemonData = [];
 
+// Wie kürzen?
 async function fetchPokemon() {
+    startLoadingAnimation();
     try {
         for (let i = limit; i < limit + 20; i++) {
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             let response = await fetch(url);
             let responseToJson = await response.json();
-            test.push(responseToJson)
-            console.log(test)
             let pokemonDetail = {
                 name: responseToJson.name,
                 img: responseToJson.sprites.other['official-artwork'].front_default,
-                types: responseToJson.types.map(typeInfo => typeInfo.type.name), // typesInfo entspricht types[i], map iteriert durch die schleife
+                types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
+                // typesInfo entspricht types[i], map iteriert durch die schleife
                 bigImg: responseToJson.sprites.other['official-artwork'].front_default 
             };
             pokemonData.push(pokemonDetail);
         }
+        console.log(pokemonData)
         renderPokemonCard();
     } catch (error) {
         console.log('Error Brudi');
