@@ -55,9 +55,9 @@ function bigCardTemplate(pokemon, j) {
             </div>
             
             <div class="button-wrapper bigcard">    
-                <button class="btn btn-dark stretch" onclick="prevPokemon(${j})">prev</button>
-                <button class="btn btn-dark stretch" onclick="nextPokemon(${j})">next</button>
-                <button class="btn btn-dark stretch" onclick="closeOverlay()">close</button>
+                <img class="icon" src="./assets/icons/left-arrow.svg" onclick="prevPokemon(${j})">
+                <img class="icon" src="./assets/icons/right.svg" onclick="nextPokemon(${j})">
+                <img class="icon" src="./assets/icons/menu.svg" onclick="closeOverlay()">
             </div>   
         </div>
     </div>`;
@@ -66,14 +66,18 @@ function bigCardTemplate(pokemon, j) {
 function contentTemplateOne(currentPokemon, a) {
     return ` 
     <div class="progress">
-    <p class="progress-text">${currentPokemon.stats[a].stat.name}</p>
+        <p class="progress-text">
+            ${currentPokemon.stats[a].base_stat >= 100 
+                ? `<strong>${currentPokemon.stats[a].stat.name.toUpperCase()}: ${currentPokemon.stats[a].base_stat}</strong>` 
+                : `${currentPokemon.stats[a].stat.name.toUpperCase()}: ${currentPokemon.stats[a].base_stat}`}
+        </p>
         <div class="progress-bar ${currentPokemon.types[0]}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:${currentPokemon.stats[a].base_stat}%"></div>
     </div>
-    `
+    `;
 }
 
 function contentTemplateTwo(pokemon, a) {
     return `
-    - ${pokemon.abilities[a]}<br>
-    `
+    - ${pokemon.abilities[a].charAt(0).toUpperCase() + pokemon.abilities[a].slice(1)}<br>
+    `;
 }

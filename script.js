@@ -91,7 +91,6 @@ function sortName() {
         if (a.name > b.name) return 1;
         return 0;
     });
-    console.log(currentPokemonData);
     renderPokemonCard(currentPokemonData);
 }
 
@@ -102,7 +101,6 @@ function sortType() {
         if (a.types[0] > b.types[0]) return 1;
         return 0;
     });
-    console.log(currentPokemonData);
     renderPokemonCard(currentPokemonData);
 }
 
@@ -148,17 +146,15 @@ function switch1(j) {
     c2.classList.add('d-none');
     c1.innerHTML = contentTemplateOne(currentPokemon, j);
     let s = j;
-    getStats(s);
+    openDialog(s);
 }
 
 function getStats(p) {
     let currentPokemon = currentPokemonData[p];
-    let content = document.getElementById(`c1-inner`);
-    content.innerHTML = ""
-    console.log(currentPokemon.stats)
+    let content = document.getElementById('c1-inner');
+    content.innerHTML = ''
     for (let s = 0; s < currentPokemon.stats.length; s++) {
         content.innerHTML += contentTemplateOne(currentPokemon, s);
-        console.log(s);
     }
 }
 

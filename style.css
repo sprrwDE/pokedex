@@ -68,7 +68,7 @@ h6 {
 
 @font-face {
     font-family: "poke";
-    src: url("/assets/pocket-monk-font/poke.ttf");
+    src: url("./assets/pocket-monk-font/poke.ttf");
 }
 
 .content-wrapper {
@@ -181,7 +181,7 @@ h6 {
     background-color: #ffd966 !important;
     color: black !important;
     border: 1px solid #ffd966 !important;
-  }
+}
 
 .type-img {
     border-radius: 100%;
@@ -247,9 +247,77 @@ h6 {
     transform: translateX(-50%);
 }
 
-@media screen and (max-width: 480px) {
+.icon {
+    width: 32px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.icon:hover {
+    filter: brightness(1.1);
+    transform: scale(1.1);
+}
+
+.bigcard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+    .button-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    header {
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .bigcard {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .stretch {
+        width: auto;
+    }
+
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bigcard {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between;
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 680px) {
     .dialog {
-        width: 90%;
+        width: 80%;
         height: 400px;
         position: absolute;
         top: 50%;
@@ -269,11 +337,7 @@ h6 {
     }
 
     .header-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
+        gap: 16px;
     }
 
     header {
@@ -286,12 +350,6 @@ h6 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 8px;
-    }
-
-    .bigcard {
-        display: flex;
-        flex-direction: row;
         gap: 8px;
     }
 
