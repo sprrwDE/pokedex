@@ -41,29 +41,3 @@ function bigCardTemplate(pokemon, j) {
     </div>`
 }
 
-function switch1(j) {
-    let c1 = document.getElementById(`content-1-${j}`);
-    let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
-    c1.classList.remove('d-none');
-    c2.classList.add('d-none');
-    c3.classList.add('d-none');
-}
-
-function switch2(j) {
-    let c1 = document.getElementById(`content-1-${j}`);
-    let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
-    c2.classList.remove('d-none');
-    c1.classList.add('d-none');
-    c3.classList.add('d-none');
-}
-
-function switch3(j) {
-    let c1 = document.getElementById(`content-1-${j}`);
-    let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
-    c3.classList.remove('d-none');
-    c1.classList.add('d-none');
-    c2.classList.add('d-none');
-}

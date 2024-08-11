@@ -23,7 +23,7 @@ function endLoadingAnmiation() {
 let limit = 1;
 let pokemonData = [];
 
-// Wie kürzen?
+// Wie kürzen? Json
 async function fetchPokemon() {
     startLoadingAnimation();
     try {
@@ -65,9 +65,18 @@ function renderPokemonCard() {
 
 function openDialog(p) {
     let overlay = document.getElementById('overlay');
+    let card = document.getElementById('big-card')
     overlay.classList.remove('d-none');
+    card.classList.remove('d-none');
     let pokemon = pokemonData[p]; 
-    overlay.innerHTML = bigCardTemplate(pokemon, p);
+    card.innerHTML = bigCardTemplate(pokemon, p);
+    // Event Bubbling stop Propagation
+    overlay.addEventListener("click", () => {
+        overlay.classList.add('d-none');
+    })
+    card.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
 }
 
 function closeOverlay() {
@@ -75,7 +84,36 @@ function closeOverlay() {
     overlay.classList.add('d-none');
 }
 
-// Event Bubbling einfügen
+/**
+ * Switch Functions inside Cards
+ */
+
+function switch1(j) {
+    let c1 = document.getElementById(`content-1-${j}`);
+    let c2 = document.getElementById(`content-2-${j}`);
+    let c3 = document.getElementById(`content-3-${j}`);
+    c1.classList.remove('d-none');
+    c2.classList.add('d-none');
+    c3.classList.add('d-none');
+}
+
+function switch2(j) {
+    let c1 = document.getElementById(`content-1-${j}`);
+    let c2 = document.getElementById(`content-2-${j}`);
+    let c3 = document.getElementById(`content-3-${j}`);
+    c2.classList.remove('d-none');
+    c1.classList.add('d-none');
+    c3.classList.add('d-none');
+}
+
+function switch3(j) {
+    let c1 = document.getElementById(`content-1-${j}`);
+    let c2 = document.getElementById(`content-2-${j}`);
+    let c3 = document.getElementById(`content-3-${j}`);
+    c3.classList.remove('d-none');
+    c1.classList.add('d-none');
+    c2.classList.add('d-none');
+}
 
 function nextPokemon(j) {
     j = (j + 1 + pokemonData.length) % pokemonData.length; 
