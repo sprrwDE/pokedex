@@ -28,6 +28,7 @@ async function fetchPokemon() {
                 name: responseToJson.name,
                 img: responseToJson.sprites.other['official-artwork'].front_default,
                 types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
+                abilities: responseToJson.abilities.map(abilityInfo => abilityInfo.ability.name),
                 // typesInfo entspricht types[i], map iteriert durch die schleife
                 bigImg: responseToJson.sprites.other['official-artwork'].front_default,
                 id: responseToJson.id
@@ -140,14 +141,23 @@ function switch1(j) {
 }
 
 function switch2(j) {
-    let currentPokemon = currentPokemonData[j]; 
     let c1 = document.getElementById(`content-1-${j}`);
     let c2 = document.getElementById(`content-2-${j}`);
     let c3 = document.getElementById(`content-3-${j}`);
     c2.classList.remove('d-none');
     c1.classList.add('d-none');
     c3.classList.add('d-none');
-    c2.innerHTML = contentTemplateTwo(currentPokemon, j);
+    getAbilities(j);
+}
+
+function getAbilities(j) {
+    let currentPokemon = currentPokemonData[j]; 
+    let content = document.getElementById(`c2-inner`);
+    content.innerHTML = ""
+    for (let a = 0; a < currentPokemon.abilities.length; a++) {
+        content.innerHTML += contentTemplateTwo(currentPokemon, a);
+    }
+
 }
 
 function switch3(j) {

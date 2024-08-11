@@ -48,7 +48,9 @@ function bigCardTemplate(pokemon, j) {
             </div>
             
             <div class="big-content d-none" id="content-2-${j}">
-                ${contentTemplateTwo(pokemon)}
+                    <h3>Abilities</h3>
+                    <div id="c2-inner">
+                    </div>
             </div>
             
             <div class="big-content d-none" id="content-3-${j}">
@@ -70,12 +72,14 @@ function contentTemplateOne(pokemon) {
     <div class="progress">
         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%">hello</div>
     </div>
+    Herausfinden wie man Progress Bars Styled<br>
+    Funktion für unterschiedliche Progress Stati (For Loop?)
     `
 }
 
-function contentTemplateTwo(pokemon) {
+function contentTemplateTwo(pokemon, a) {
     return `
-        <h3>Abilities</h3>
+    - ${pokemon.abilities[a]}<br>
     `
 }
 
