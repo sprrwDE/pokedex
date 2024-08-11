@@ -21,20 +21,7 @@ async function fetchPokemon() {
     startLoadingAnimation();
     try {
         for (let i = limit; i < limit + 20; i++) {
-            let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-            let response = await fetch(url);
-            let responseToJson = await response.json();
-            let pokemonDetail = {
-                name: responseToJson.name,
-                img: responseToJson.sprites.other['official-artwork'].front_default,
-                types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
-                abilities: responseToJson.abilities.map(abilityInfo => abilityInfo.ability.name),
-                // typesInfo entspricht types[i], map iteriert durch die schleife
-                bigImg: responseToJson.sprites.other['official-artwork'].front_default,
-                id: responseToJson.id
-            };
-            pokemonData.push(pokemonDetail);
-            console.log(responseToJson)
+            await iterateFetch(i)
         }
         console.log(pokemonData)
         renderPokemonCard();
@@ -44,6 +31,28 @@ async function fetchPokemon() {
         endLoadingAnmiation();
         console.log('Pokemon successfully fetched');
     }
+}
+
+async function iterateFetch(i) {
+    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    let response = await fetch(url);
+    let responseToJson = await response.json();
+    let pokemonDetail = saveData(responseToJson);
+    pokemonData.push(pokemonDetail);
+    console.log(responseToJson)
+}
+
+function saveData(responseToJson) {
+    let pokemonDetail = {
+        name: responseToJson.name,
+        img: responseToJson.sprites.other['official-artwork'].front_default,
+        types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
+        abilities: responseToJson.abilities.map(abilityInfo => abilityInfo.ability.name),
+        // typesInfo entspricht types[i], map iteriert durch die schleife
+        bigImg: responseToJson.sprites.other['official-artwork'].front_default,
+        id: responseToJson.id
+    };
+    return pokemonDetail;
 }
 
 function renderPokemonCard() {
@@ -157,7 +166,6 @@ function getAbilities(j) {
     for (let a = 0; a < currentPokemon.abilities.length; a++) {
         content.innerHTML += contentTemplateTwo(currentPokemon, a);
     }
-
 }
 
 function switch3(j) {
@@ -181,15 +189,15 @@ function prevPokemon(j) {
     openDialog(j);
 }
 
+/**
+ * Loading Functions
+ */
+
 function loadPokemon() {
     currentPokemonData = pokemonData;
     limit += 20;
     fetchPokemon()
 }
-
-/**
- * Loading Animations
- */
 
 function startLoadingAnimation() {
     let overlay = document.getElementById('overlay-loading');
