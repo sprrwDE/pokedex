@@ -59,7 +59,7 @@ function renderPokemonCard() {
 function filter() {
     let input = document.getElementById('filter').value;
     if (input === "") {
-        currentPokemonData = pokemonData
+        currentPokemonData = pokemonData.slice()
         renderPokemonCard();
     } else {
     let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
@@ -68,8 +68,30 @@ function filter() {
 }
 
 function reset() {
-    currentPokemonData = pokemonData
+    currentPokemonData = pokemonData.slice();
     renderPokemonCard();
+}
+
+function sortName() {
+    currentPokemonData = pokemonData.slice();
+    currentPokemonData.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+    });
+    console.log(currentPokemonData);
+    renderPokemonCard(currentPokemonData);
+}
+
+function sortType() {
+    currentPokemonData = pokemonData.slice();
+    currentPokemonData.sort((a, b) => {
+        if (a.types[0] < b.types[0]) return -1;
+        if (a.types[0] > b.types[0]) return 1;
+        return 0;
+    });
+    console.log(currentPokemonData);
+    renderPokemonCard(currentPokemonData);
 }
 
 /**
