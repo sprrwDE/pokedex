@@ -164,13 +164,24 @@ h6 {
     padding: 16px;
     border-radius: 16px;
     height: 200px;
-    background-color: #ffd966;
+    background-color: rgb(255, 232, 158);
     margin: 16px 0;
 }
 
 .btn {
     border-radius: 16px !important;
 }
+
+.btn:hover {
+    background-color: #ffd966 !important;
+    color: black !important;
+}
+
+.active {
+    background-color: #ffd966 !important;
+    color: black !important;
+    border: 1px solid #ffd966 !important;
+  }
 
 .type-img {
     border-radius: 100%;
@@ -224,6 +235,16 @@ h6 {
     display: flex !important;
     justify-content: center !important;
     text-align: center !important;
+}
+
+.progress {
+    margin-bottom: 8px;
+}
+
+.progress-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media screen and (max-width: 480px) {

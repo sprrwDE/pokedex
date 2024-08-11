@@ -16,14 +16,12 @@ let currentPokemonData = [];
  * Fetch Pokemon and Render Content
  */
 
-// Wie kürzen? Json auslagern?
 async function fetchPokemon() {
     startLoadingAnimation();
     try {
         for (let i = limit; i < limit + 20; i++) {
             await iterateFetch(i)
         }
-        console.log(pokemonData)
         renderPokemonCard();
     } catch (error) {
         console.log('Error Brudi');
@@ -39,16 +37,15 @@ async function iterateFetch(i) {
     let responseToJson = await response.json();
     let pokemonDetail = saveData(responseToJson);
     pokemonData.push(pokemonDetail);
-    console.log(responseToJson)
 }
 
 function saveData(responseToJson) {
     let pokemonDetail = {
         name: responseToJson.name,
         img: responseToJson.sprites.other['official-artwork'].front_default,
-        types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
+        types: responseToJson.types.map(typeInfo => typeInfo.type.name),
         abilities: responseToJson.abilities.map(abilityInfo => abilityInfo.ability.name),
-        // typesInfo entspricht types[i], map iteriert durch die schleife
+        stats: responseToJson.stats.map(statsInfo => statsInfo),
         bigImg: responseToJson.sprites.other['official-artwork'].front_default,
         id: responseToJson.id
     };
@@ -57,10 +54,10 @@ function saveData(responseToJson) {
 
 function renderPokemonCard() {
     let content = document.getElementById('content');
-    content.innerHTML = ''; 
+    content.innerHTML = '';
     for (let p = 0; p < currentPokemonData.length; p++) {
-        let pokemon = currentPokemonData[p]; 
-        content.innerHTML += cardTemplate(pokemon, p); 
+        let pokemon = currentPokemonData[p];
+        content.innerHTML += cardTemplate(pokemon, p);
     }
 }
 
@@ -74,11 +71,11 @@ function filter() {
         currentPokemonData = pokemonData.slice()
         renderPokemonCard();
     } else if (input.length < 3) {
-        alert('bitte geben Sie mindestens 3 Buchstaben ein') 
+        alert('bitte geben Sie mindestens 3 Buchstaben ein')
     } else {
-    let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
-    currentPokemonData = filteredPokemonData.slice(0, 10);
-    renderPokemonCard();
+        let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+        currentPokemonData = filteredPokemonData.slice(0, 10);
+        renderPokemonCard();
     }
 }
 
@@ -116,11 +113,12 @@ function sortType() {
 function openDialog(p) {
     let overlay = document.getElementById('overlay');
     let card = document.getElementById('big-card')
+    let pokemon = currentPokemonData[p];
     overlay.classList.remove('d-none');
     card.classList.remove('d-none');
-    let pokemon = currentPokemonData[p]; 
     card.innerHTML = bigCardTemplate(pokemon, p);
-    // Event Bubbling stop Propagation
+    getStats(p);
+
     overlay.addEventListener("click", () => {
         overlay.classList.add('d-none');
     })
@@ -139,28 +137,45 @@ function closeOverlay() {
  */
 
 function switch1(j) {
-    let currentPokemon = currentPokemonData[j]; 
+    let currentPokemon = currentPokemonData[j];
+    let btnA = document.getElementById('btn1');
+    let btnB = document.getElementById('btn2')
     let c1 = document.getElementById(`content-1-${j}`);
     let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
+    btnA.classList.add('active')
+    btnB.classList.remove('active')
     c1.classList.remove('d-none');
     c2.classList.add('d-none');
-    c3.classList.add('d-none');
     c1.innerHTML = contentTemplateOne(currentPokemon, j);
+    let s = j;
+    getStats(s);
+}
+
+function getStats(p) {
+    let currentPokemon = currentPokemonData[p];
+    let content = document.getElementById(`c1-inner`);
+    content.innerHTML = ""
+    console.log(currentPokemon.stats)
+    for (let s = 0; s < currentPokemon.stats.length; s++) {
+        content.innerHTML += contentTemplateOne(currentPokemon, s);
+        console.log(s);
+    }
 }
 
 function switch2(j) {
+    let btnA = document.getElementById("btn2");
+    let btnB = document.getElementById('btn1')
     let c1 = document.getElementById(`content-1-${j}`);
     let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
+    btnB.classList.remove('active')
+    btnA.classList.add('active')
     c2.classList.remove('d-none');
     c1.classList.add('d-none');
-    c3.classList.add('d-none');
     getAbilities(j);
 }
 
 function getAbilities(j) {
-    let currentPokemon = currentPokemonData[j]; 
+    let currentPokemon = currentPokemonData[j];
     let content = document.getElementById(`c2-inner`);
     content.innerHTML = ""
     for (let a = 0; a < currentPokemon.abilities.length; a++) {
@@ -168,24 +183,13 @@ function getAbilities(j) {
     }
 }
 
-function switch3(j) {
-    let currentPokemon = currentPokemonData[j]; 
-    let c1 = document.getElementById(`content-1-${j}`);
-    let c2 = document.getElementById(`content-2-${j}`);
-    let c3 = document.getElementById(`content-3-${j}`);
-    c3.classList.remove('d-none');
-    c1.classList.add('d-none');
-    c2.classList.add('d-none');
-    c3.innerHTML = contentTemplateThree(currentPokemon, j);
-}
-
 function nextPokemon(j) {
-    j = (j + 1 + currentPokemonData.length) % currentPokemonData.length; 
+    j = (j + 1 + currentPokemonData.length) % currentPokemonData.length;
     openDialog(j);
 }
 
 function prevPokemon(j) {
-    j = (j - 1 + currentPokemonData.length) % currentPokemonData.length; 
+    j = (j - 1 + currentPokemonData.length) % currentPokemonData.length;
     openDialog(j);
 }
 
