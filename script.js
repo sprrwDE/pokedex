@@ -67,6 +67,11 @@ function filter() {
     renderPokemonCard();}
 }
 
+function reset() {
+    currentPokemonData = pokemonData
+    renderPokemonCard();
+}
+
 /**
  * Open Big Pokemon Cards and Overlay
  */
