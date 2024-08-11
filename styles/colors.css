@@ -57,3 +57,67 @@
 .dragon {
     background-color: #C28282 !important; /* Sanftes Dunkelrot */
 }
+
+.grassimg {
+    background-color: #4CAF50 !important; /* Knalliges Grün */
+}
+
+.fireimg {
+    background-color: #FF5733 !important; /* Knalliges Rot-Orange */
+}
+
+.waterimg {
+    background-color: #2196F3 !important; /* Knalliges Blau */
+}
+
+.bugimg {
+    background-color: #9C27B0 !important; /* Knalliges Violett */
+}
+
+.normalimg {
+    background-color: #FFC107 !important; /* Knalliges Gelb */
+}
+
+.poisonimg {
+    background-color: #8BC34A !important; /* Knalliges Grün */
+}
+
+.darkimg {
+    background-color: #3F51B5 !important; /* Knalliges Dunkelblau */
+}
+
+.electricimg {
+    background-color: #FFEB3B !important; /* Knalliges Gelb */
+}
+
+.groundimg {
+    background-color: #FF9800 !important; /* Knalliges Orange */
+}
+
+.rockimg {
+    background-color: #9E9E9E !important; /* Knalliges Grau */
+}
+
+.psychicimg {
+    background-color: #00BCD4 !important; /* Knalliges Cyan */
+}
+
+.fairyimg {
+    background-color: #E91E63 !important; /* Knalliges Pink */
+}
+
+.iceimg {
+    background-color: #00E5FF !important; /* Knalliges Türkis */
+}
+
+.darkimg {
+    background-color: #673AB7 !important; /* Knalliges Violett */
+}
+
+.dragonimg {
+    background-color: #FF5252 !important; /* Knalliges Rot */
+}
+
+.flyingimg {
+    background-color: sandybrown !important; /* Knalliges Rot */
+}
