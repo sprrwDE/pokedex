@@ -5,14 +5,18 @@ function init() {
 };
 
 /**
- * Fetch Pokemon and Render Content
+ * Data
  */
 
 let limit = 1;
 let pokemonData = [];
 let currentPokemonData = [];
 
-// Wie kürzen? Json
+/**
+ * Fetch Pokemon and Render Content
+ */
+
+// Wie kürzen? Json auslagern?
 async function fetchPokemon() {
     startLoadingAnimation();
     try {
@@ -46,6 +50,21 @@ function renderPokemonCard() {
         let pokemon = currentPokemonData[p]; 
         content.innerHTML += cardTemplate(pokemon, p); 
     }
+}
+
+/**
+ * Filter
+ */
+
+function filter() {
+    let input = document.getElementById('filter').value;
+    if (input === "") {
+        currentPokemonData = pokemonData
+        renderPokemonCard();
+    } else {
+    let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+    currentPokemonData = filteredPokemonData
+    renderPokemonCard();}
 }
 
 /**
