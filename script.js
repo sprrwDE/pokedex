@@ -29,9 +29,11 @@ async function fetchPokemon() {
                 img: responseToJson.sprites.other['official-artwork'].front_default,
                 types: responseToJson.types.map(typeInfo => typeInfo.type.name), 
                 // typesInfo entspricht types[i], map iteriert durch die schleife
-                bigImg: responseToJson.sprites.other['official-artwork'].front_default 
+                bigImg: responseToJson.sprites.other['official-artwork'].front_default,
+                id: responseToJson.id
             };
             pokemonData.push(pokemonDetail);
+            console.log(responseToJson)
         }
         console.log(pokemonData)
         renderPokemonCard();

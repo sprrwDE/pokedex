@@ -192,11 +192,22 @@ h6 {
 
 .type-wrapper-small {
     display: flex;
-    justify-content: space-around !important;
+    justify-content: space-between !important;
+    align-items: center;
     margin-bottom: 16px;
     background-color: #354348;
-    padding: 8px;
-    border-radius: 24px; 
+    padding: 8px 24px;
+    border-radius: 24px;
+    gap: 8px;
+}
+
+.light {
+    color: white !important;
+}
+
+.type-wrapper-inner {
+    display: flex;
+    justify-content: flex-start !important;
     gap: 8px;
 }
 
@@ -206,7 +217,13 @@ h6 {
     display: flex;
     justify-content: center;
     padding: 8px;
-    border-radius: 24px; 
+    border-radius: 24px;
+}
+
+.progress-bar {
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
 }
 
 @media screen and (max-width: 480px) {
@@ -258,7 +275,6 @@ h6 {
     }
 
     .stretch {
-        width:auto;
+        width: auto;
     }
 }
-

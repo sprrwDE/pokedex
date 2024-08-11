@@ -2,6 +2,7 @@ function cardTemplate(pokemon, p) {
     return `
     <div class="card small ${pokemon.types[0]}" style="width: 18rem;" id="card${p}" onclick="openDialog(${p})">
     <div class="type-wrapper-small">
+        <div class="type-wrapper-inner">
     <div class="type-img ${pokemon.types[0]}img">
         <img class="type-img" src="assets/icons/types/${pokemon.types[0]}.svg">
     </div>
@@ -10,6 +11,8 @@ function cardTemplate(pokemon, p) {
         <img class="type-img" src="assets/icons/types/${pokemon.types[1]}.svg">
     </div>
     ` : ''}
+    </div>
+    <h3 class="light"> #${pokemon.id}
     </div>
     <img src="${pokemon.img}" class="card-img-top" alt="${pokemon.name}">
     <div class="card-body">
@@ -41,15 +44,18 @@ function bigCardTemplate(pokemon, j) {
     </div>
     
     <div class="big-content" id="content-1-${j}">
-    <h3>${pokemon.types[0]}</h3>
+    <div class="progress">
+    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%">hello</div>
+    </div>
+
     </div>
     
     <div class="big-content d-none" id="content-2-${j}">
-    Insert Template 2 here
+    <h3>${pokemon.types[0]} Blaa</h3>
     </div>
     
     <div class="big-content d-none" id="content-3-${j}">
-    Insert Template 3 here
+    <h3>${pokemon.types[0]} Blubb</h3>
     </div>
     
     <div class="button-wrapper bigcard">    
