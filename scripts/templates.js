@@ -13,11 +13,11 @@ function bigCardTemplate(pokemon, j) {
     <div class="dialog ${pokemon.types[0]}">
     <img class="big" src="${pokemon.bigImg}" class="card-img-top" alt="...">
     <h3>${pokemon.name}</h3>
-
-    <div class="button-wrapper">    
-    <button class="btn btn-dark" onclick="switch1(${j})">c1</button>
-    <button class="btn btn-dark" onclick="switch2(${j})">c2</button>
-    <button class="btn btn-dark" onclick="switch3(${j})">c3</button>
+    <div class = "big-content-wrapper">
+    <div class="button-wrapper bigcard">    
+    <button class="btn btn-dark stretch" onclick="switch1(${j})">c1</button>
+    <button class="btn btn-dark stretch" onclick="switch2(${j})">c2</button>
+    <button class="btn btn-dark stretch" onclick="switch3(${j})">c3</button>
     </div>
     
     <div class="big-content" id="content-1-${j}">
@@ -32,12 +32,12 @@ function bigCardTemplate(pokemon, j) {
     Insert Template 3 here
     </div>
     
-    <div class="button-wrapper">    
-    <button class="btn btn-dark" onclick="prevPokemon(${j})">prev</button>
-    <button class="btn btn-dark" onclick="nextPokemon(${j})">next</button>
-    <button class="btn btn-dark" onclick="closeOverlay()">close</button>
+    <div class="button-wrapper bigcard">    
+    <button class="btn btn-dark stretch" onclick="prevPokemon(${j})">prev</button>
+    <button class="btn btn-dark stretch" onclick="nextPokemon(${j})">next</button>
+    <button class="btn btn-dark stretch" onclick="closeOverlay()">close</button>
     </div>
-    
+    </div>
     </div>`
 }
 

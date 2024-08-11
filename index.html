@@ -18,14 +18,19 @@
             <h1>Gotta fetch 'em ALL</h1>
             <div class="button-wrapper">
                 <h3>sort by</h3>
-                <button class="btn btn-dark" onclick="reset()">number</button>
-                <button class="btn btn-dark" onclick="sortName()">name</button>
-                <button class="btn btn-dark" onclick="sortType()">type</button>
+                <div class="button-wrapper-inner">
+                    <button class="btn btn-dark" onclick="reset()">number</button>
+                    <button class="btn btn-dark" onclick="sortName()">name</button>
+                    <button class="btn btn-dark" onclick="sortType()">type</button>
+                </div>
             </div>
             <div class="button-wrapper">
+                <h3>filter</h3>
                 <input type="text" id="filter" placeholder="search">
-                <button class="btn btn-dark" onclick="filter()">filter</button>
-                <button class="btn btn-dark" onclick="reset()">reset</button>
+                <div class="button-wrapper-inner">
+                    <button class="btn btn-dark" onclick="filter()">filter</button>
+                    <button class="btn btn-dark" onclick="reset()">reset</button>
+                </div>
             </div>
         </div>
     </header>
@@ -49,7 +54,12 @@
         </section>
 
     </main>
-    <footer><button class="btn btn-dark" onclick="loadPokemon()">load more</button></footer>
+    <footer>
+        <div class="button-wrapper">
+            <button class="btn btn-dark" onclick="loadPokemon()">load more</button>
+            <button class="btn btn-dark" onclick="loadOneFifty()">load first 150</button>
+        </div>
+    </footer>
     <script src="scripts/templates.js"></script>
     <script src="script.js"></script>
 </body>
