@@ -1,20 +1,8 @@
 function init() {
     fetchPokemon();
+    currentPokemonData = pokemonData;
+    console.log(currentPokemonData);
 };
-
-/**
- * Loading Animations
- */
-
-function startLoadingAnimation() {
-    let overlay = document.getElementById('overlay-loading');
-    overlay.classList.remove('d-none');
-}
-
-function endLoadingAnmiation() {
-    let overlay = document.getElementById('overlay-loading');
-    overlay.classList.add('d-none');
-}
 
 /**
  * Fetch Pokemon and Render Content
@@ -22,6 +10,7 @@ function endLoadingAnmiation() {
 
 let limit = 1;
 let pokemonData = [];
+let currentPokemonData = [];
 
 // Wie kürzen? Json
 async function fetchPokemon() {
@@ -53,8 +42,8 @@ async function fetchPokemon() {
 function renderPokemonCard() {
     let content = document.getElementById('content');
     content.innerHTML = ''; 
-    for (let p = 0; p < pokemonData.length; p++) {
-        let pokemon = pokemonData[p]; 
+    for (let p = 0; p < currentPokemonData.length; p++) {
+        let pokemon = currentPokemonData[p]; 
         content.innerHTML += cardTemplate(pokemon, p); 
     }
 }
@@ -68,7 +57,7 @@ function openDialog(p) {
     let card = document.getElementById('big-card')
     overlay.classList.remove('d-none');
     card.classList.remove('d-none');
-    let pokemon = pokemonData[p]; 
+    let pokemon = currentPokemonData[p]; 
     card.innerHTML = bigCardTemplate(pokemon, p);
     // Event Bubbling stop Propagation
     overlay.addEventListener("click", () => {
@@ -116,16 +105,30 @@ function switch3(j) {
 }
 
 function nextPokemon(j) {
-    j = (j + 1 + pokemonData.length) % pokemonData.length; 
+    j = (j + 1 + currentPokemonData.length) % currentPokemonData.length; 
     openDialog(j);
 }
 
 function prevPokemon(j) {
-    j = (j - 1 + pokemonData.length) % pokemonData.length; 
+    j = (j - 1 + currentPokemonData.length) % currentPokemonData.length; 
     openDialog(j);
 }
 
 function loadPokemon() {
     limit += 20;
     fetchPokemon()
+}
+
+/**
+ * Loading Animations
+ */
+
+function startLoadingAnimation() {
+    let overlay = document.getElementById('overlay-loading');
+    overlay.classList.remove('d-none');
+}
+
+function endLoadingAnmiation() {
+    let overlay = document.getElementById('overlay-loading');
+    overlay.classList.add('d-none');
 }

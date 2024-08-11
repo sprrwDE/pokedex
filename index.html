@@ -14,10 +14,20 @@
 
 <body onload="init()">
     <header>
-        <h1>Gotta fetch 'em ALL</h1>
+        <div class="container header-content">
+            <h1>Gotta fetch 'em ALL</h1>
+            <div class="button-wrapper">
+                <h3>sort by</h3>
+                <button class="btn btn-dark" onclick="">number</button>
+                <button class="btn btn-dark" onclick="">name</button>
+                <button class="btn btn-dark" onclick="">type</button>
+            </div>
+            <input type="text" id="filter" placeholder="search">
+        </div>
+
     </header>
 
-        <!-- Loading Overlay -->
+    <!-- Loading Overlay -->
     <div class="overlay d-none" id="overlay-loading">
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
             type="module"></script>
@@ -25,11 +35,11 @@
             background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
     </div>
 
-        <!-- Big Card Overlay -->
+    <!-- Big Card Overlay -->
     <div class="overlay d-none" id="overlay">
         <div class="big-card" id="big-card"></div>
     </div>
-        <!-- Content -->
+    <!-- Content -->
     <main>
         <section class="content-wrapper container" id="content">
             <!-- Pokemon Card Template -->

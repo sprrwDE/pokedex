@@ -1,59 +1,59 @@
 .grass {
-    background-color: green !important;
+    background-color: #7BC47F !important; /* Sanftes Grün */
 }
 
 .fire {
-    background-color: orange !important;
+    background-color: #F5A282 !important; /* Sanftes Orange-Rot */
 }
 
 .water {
-    background-color: lightblue !important;
+    background-color: #A3D8F4 !important; /* Sanftes Hellblau */
 }
 
 .bug {
-    background-color: violet !important;
+    background-color: #B19CD9 !important; /* Sanftes Violett */
 }
 
 .normal {
-    background-color: sandybrown !important;
+    background-color: #E0B89F !important; /* Sanftes Sandbraun */
 }
 
 .poison {
-    background-color: greenyellow !important;
+    background-color: #C5E3A6 !important; /* Sanftes Gelbgrün */
 }
 
 .dark {
-    background-color: darkblue !important;
+    background-color: #6A7BA2 !important; /* Sanftes Dunkelblau */
 }
 
 .electric {
-    background-color: yellow !important;
+    background-color: #F8E6A0 !important; /* Sanftes Gelb */
 }
 
 .ground {
-    background-color: brown !important;
+    background-color: #D1A07F !important; /* Sanftes Braun */
 }
 
 .rock {
-    background-color: grey !important;
+    background-color: #B0B0B0 !important; /* Sanftes Grau */
 }
 
 .psychic {
-    background-color: darkcyan !important;
+    background-color: #8FC1C1 !important; /* Sanftes Dunkelcyan */
 }
 
 .fairy {
-    background-color: pink !important;
+    background-color: #F7C4D7 !important; /* Sanftes Rosa */
 }
 
 .ice {
-    background-color: turquoise !important;
+    background-color: #A8E3E1 !important; /* Sanftes Türkis */
 }
 
 .dark {
-    background-color: darkmagenta !important;
+    background-color: #9E7DAE !important; /* Sanftes Dunkelmagenta */
 }
 
 .dragon {
-    background-color: darkred !important;
+    background-color: #C28282 !important; /* Sanftes Dunkelrot */
 }

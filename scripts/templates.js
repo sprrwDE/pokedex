@@ -25,11 +25,11 @@ function bigCardTemplate(pokemon, j) {
     </div>
     
     <div class="big-content d-none" id="content-2-${j}">
-    asd
+    Insert Template 2 here
     </div>
     
     <div class="big-content d-none" id="content-3-${j}">
-    hello
+    Insert Template 3 here
     </div>
     
     <div class="button-wrapper">    

@@ -115,5 +115,8 @@ h6 {
     justify-content: center;
 }
 
-.big-card {
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
