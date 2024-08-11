@@ -61,10 +61,13 @@ function filter() {
     if (input === "") {
         currentPokemonData = pokemonData.slice()
         renderPokemonCard();
+    } else if (input.length < 3) {
+        alert('bitte geben Sie mindestens 3 Buchstaben ein') 
     } else {
     let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
-    currentPokemonData = filteredPokemonData
-    renderPokemonCard();}
+    currentPokemonData = filteredPokemonData.slice(0, 10);
+    renderPokemonCard();
+    }
 }
 
 function reset() {
@@ -161,6 +164,7 @@ function prevPokemon(j) {
 }
 
 function loadPokemon() {
+    currentPokemonData = pokemonData;
     limit += 20;
     fetchPokemon()
 }
