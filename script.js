@@ -67,16 +67,14 @@ function renderPokemonCard() {
 
 function filter() {
     let input = document.getElementById('filter').value;
-    if (input === "") {
-        currentPokemonData = pokemonData.slice()
-        renderPokemonCard();
-    } else if (input.length < 3) {
-        alert('bitte geben Sie mindestens 3 Buchstaben ein')
+    if (input == "") {
+        currentPokemonData = pokemonData.slice();
     } else {
         let filteredPokemonData = currentPokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(input));
         currentPokemonData = filteredPokemonData.slice(0, 10);
-        renderPokemonCard();
     }
+    renderPokemonCard();
+
 }
 
 function reset() {
