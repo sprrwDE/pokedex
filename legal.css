@@ -40,3 +40,25 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+.legal-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    z-index: 1;
+    gap: 32px;
+    color: white!important;
+    flex-direction: column;
+    justify-content: flex-start!important;
+    width: 100%!important;
+}
+
+.legal-wrapper p, ul {
+    width: 100%!important;
+}
+
+.legal-wrapper a {
+    color: #FFD866;
+}
