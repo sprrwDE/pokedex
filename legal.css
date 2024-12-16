@@ -53,6 +53,7 @@ footer {
     flex-direction: column;
     justify-content: flex-start!important;
     width: 100%!important;
+    gap: 8px;
 }
 
 .legal-wrapper p, ul {
@@ -61,4 +62,9 @@ footer {
 
 .legal-wrapper a {
     color: #FFD866;
+}
+
+.legal-wrapper h1, h2, h3, h4, h5, h6 {
+    width: 100%!important;
+    text-align: left;
 }
