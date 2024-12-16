@@ -1,0 +1,42 @@
+/* Variables */
+
+/* Document & Container */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 100px;
+    background-color: #ffd966;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    background-color: #253237;
+}
+
+footer {
+    height: 100px;
+    background-color: #ffd966;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

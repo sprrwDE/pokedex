@@ -1,7 +1,6 @@
 function init() {
     fetchPokemon();
     currentPokemonData = pokemonData;
-    console.log(currentPokemonData);
 };
 
 /**
@@ -23,11 +22,11 @@ async function fetchPokemon() {
             await iterateFetch(i)
         }
         renderPokemonCard();
+        console.log(pokemonData);
     } catch (error) {
-        console.log('Error Brudi');
+        console.log('Error Loading Pokemon');
     } finally {
         endLoadingAnmiation();
-        console.log('Pokemon successfully fetched');
     }
 }
 
